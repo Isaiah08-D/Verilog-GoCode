@@ -1,0 +1,2 @@
+run = "python gocode.py"
+language = "python3"
