@@ -1,11 +1,8 @@
 from flask import Flask, render_template, session, redirect, flash, url_for
 from replit import db
-from wtforms import StringField, SubmitField
-from wtforms.validators import DataRequired
-from flask_bootstrap import Bootstrap
-from flask_wtf import FlaskForm
-import forms.py
 
+import forms.py as forms
+app.config['SECRET_KEY'] = 'VLXG5dASre6k91gvFGAh'
 app = Flask(__name__)
 
 @app.route('/')
@@ -14,4 +11,13 @@ def index():
 
 @app.route('/code')
 def code():
+	form = forms.chose_language()
+  if session.get('logged_in') == False:
+    return render_template('index.html')
+  if form.validate_on_submit():
+		language = form.language.data
+		name = form.name.data
+		db[session.get('logged_in')][0] += (name, language)
+    return redirect
+ return render_template('login.html', form=form)
   
