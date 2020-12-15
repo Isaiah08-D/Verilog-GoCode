@@ -1,0 +1,21 @@
+DOCTYPE html>
+<html>
+<head>
+	<title>{% block title %}{% endblock %}</title>
+	<link rel='stylesheet' href='/static/style.css'>
+</head>
+<body>
+<div class="header">
+	<h1>GoCode</h1>
+	<div class="navbar">	
+		<a href="/" class="{% block active_home %}{% endblock %}">Home</a>
+
+		<a href="/code" class="{% block active_code %}}{% endblock %}">Code</a>
+
+		<a href="/post" class="{% block active_post %}}{% endblock %}">Post</a>
+	</div>
+</div>
+{% block content %}
+{% endblock %}
+</body>
+</html>
