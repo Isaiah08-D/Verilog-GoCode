@@ -27,3 +27,4 @@ def code():
 def login():
 	form = forms.login()
 	
+app.run('0.0.0.0')
