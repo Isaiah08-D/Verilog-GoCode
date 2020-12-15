@@ -12,12 +12,17 @@ def index():
 @app.route('/code')
 def code():
 	form = forms.chose_language()
-  if session.get('logged_in') == False:
-    return render_template('index.html')
-  if form.validate_on_submit():
+	if session.get('logged_in') == False:
+		flash('You must be logged in to view this page!')
+		return render_template('index.html')
+	if form.validate_on_submit():
 		language = form.language.data
 		name = form.name.data
 		db[session.get('logged_in')][0] += (name, language)
-    return redirect
- return render_template('login.html', form=form)
-  
+		return redirect('/code/' + name)
+	return render_template('login.html', form=form)
+
+@app.route('/login')
+def login():
+	form = forms.login()
+	
