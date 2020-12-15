@@ -1,9 +1,10 @@
 from flask import Flask, render_template, session, redirect, flash, url_for
 from replit import db
-
 import forms.py as forms
-app.config['SECRET_KEY'] = 'VLXG5dASre6k91gvFGAh'
+
 app = Flask(__name__)
+
+app.config['SECRET_KEY'] = 'VLXG5dASre6k91gvFGAh'
 
 @app.route('/')
 def index():
