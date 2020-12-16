@@ -21,7 +21,7 @@ def code():
 		name = form.name.data
 		db[session.get('logged_in')][0] += (name, language)
 		return redirect('/code/' + name)
-	return render_template('login.html', form=form)
+	return render_template('code.html', form=form)
 
 @app.route('/login')
 def login():
